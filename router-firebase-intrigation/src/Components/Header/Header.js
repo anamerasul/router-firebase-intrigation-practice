@@ -12,7 +12,7 @@ const Header = () => {
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start">
                         <Link to='/'
-                            className="text-4xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-fuchsia-300 md:text-white "
+                            className=" text-xl md:text-4xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-fuchsia-300 md:text-white "
                         >
                             router-firebase
                         </Link>
@@ -34,6 +34,12 @@ const Header = () => {
                         <ul className="flex flex-col md:flex-row list-none  md:ml-auto">
                             <li className="nav-item">
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/'>HOME</CustomLink>
+                            </li>
+                            <li className="nav-item">
+                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/products'>products</CustomLink>
+                            </li>
+                            <li className="nav-item">
+                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/orders'>Orders</CustomLink>
                             </li>
                             <li className="nav-item">
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
