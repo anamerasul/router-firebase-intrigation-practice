@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom';
 import { MdLegendToggle } from 'react-icons/md';
 // import CustomLink from '../../CustomLInk/CustomLink';
 import CustomLink from '../CustomLInk/CustomLink';
+import UseFirebase from '../../Hooks/UseFirebase';
 
 const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+
+
+    const { user } = UseFirebase()
+
+    console.log(user)
     return (
         <>
             <nav className="flex flex-wrap items-center justify-between px-2 py-3 top-0 bg-gray-800 shadow-lg  text-white mb-3">
@@ -42,11 +48,18 @@ const Header = () => {
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/orders'>Orders</CustomLink>
                             </li>
                             <li className="nav-item">
-                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
-                            </li>
-                            <li className="nav-item">
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/signup'>Sign Up</CustomLink>
                             </li>
+
+                            {
+
+
+                            }
+                            <li className="nav-item">
+                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>
