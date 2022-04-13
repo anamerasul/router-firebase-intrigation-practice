@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 // import UseFirebase from '../../Hooks/UseFirebase';
 
@@ -17,6 +17,22 @@ const Login = () => {
     // const { signInwithGoogle } = UseFirebase()
 
     const [SignInnWithGoogle, user] = useSignInWithGoogle(auth)
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const from = location?.state?.from?.pathname || '/'
+
+    const handleGoogleSignIn = () => {
+
+        SignInnWithGoogle()
+            .then(() => {
+
+                navigate(from, { replace: true })
+            })
+    }
+
+
     return (
         <div className="flex justify-center">
             <div className="w-full max-w-xs">
@@ -28,7 +44,7 @@ const Login = () => {
                     <h2 className="text-lg text-center bg-orange-100">Login</h2>
                     <div className="mt-4 mx-auto">
 
-                        <button onClick={() => SignInnWithGoogle()} className="bg-blue-200 mx-auto text-center hover:bg-gray-600 hover:text-white text-black font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline text-[14px]">
+                        <button onClick={handleGoogleSignIn} className="bg-blue-200 mx-auto text-center hover:bg-gray-600 hover:text-white text-black font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline text-[14px]">
                             <FcGoogle></FcGoogle>
                         </button>
                     </div>
