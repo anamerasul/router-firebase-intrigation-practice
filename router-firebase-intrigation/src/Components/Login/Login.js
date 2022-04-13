@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
-import UseFirebase from '../../Hooks/UseFirebase';
+// import UseFirebase from '../../Hooks/UseFirebase';
 
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
+import { getAuth } from 'firebase/auth';
+import app from '../../firebase.init';
 const Login = () => {
 
-
+    const auth = getAuth(app.myapp)
     const handleFormSubmit = (e) => {
 
         e.preventDefault();
     }
 
-    const { signInwithGoogle } = UseFirebase()
+    // const { signInwithGoogle } = UseFirebase()
+
+    const [SignInnWithGoogle, user] = useSignInWithGoogle(auth)
     return (
         <div className="flex justify-center">
             <div className="w-full max-w-xs">
@@ -23,7 +28,7 @@ const Login = () => {
                     <h2 className="text-lg text-center bg-orange-100">Login</h2>
                     <div className="mt-4 mx-auto">
 
-                        <button onClick={signInwithGoogle} className="bg-blue-200 mx-auto text-center hover:bg-gray-600 hover:text-white text-black font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline text-[14px]">
+                        <button onClick={() => SignInnWithGoogle()} className="bg-blue-200 mx-auto text-center hover:bg-gray-600 hover:text-white text-black font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline text-[14px]">
                             <FcGoogle></FcGoogle>
                         </button>
                     </div>

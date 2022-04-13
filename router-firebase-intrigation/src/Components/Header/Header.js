@@ -4,12 +4,20 @@ import { MdLegendToggle } from 'react-icons/md';
 // import CustomLink from '../../CustomLInk/CustomLink';
 import CustomLink from '../CustomLInk/CustomLink';
 import UseFirebase from '../../Hooks/UseFirebase';
+import { getAuth, signOut } from 'firebase/auth';
+import app from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+const auth = getAuth(app.myapp)
+
+
+
 
 const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
-
-    const { user, handleSignOut } = UseFirebase()
+    const [user] = useAuthState(auth)
+    // const { user, handleSignOut } = UseFirebase()
 
     console.log(user)
     return (
@@ -58,7 +66,7 @@ const Header = () => {
                                 user?.uid ?
 
                                     <li className="nav-item">
-                                        <button onClick={handleSignOut} className="px-3 py-2 flex items-center uppercase">Logout</button>
+                                        <button onClick={() => signOut(auth)} className="px-3 py-2 flex items-center uppercase">Logout</button>
                                     </li> :
                                     <li className="nav-item">
                                         <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
