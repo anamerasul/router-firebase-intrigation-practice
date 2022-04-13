@@ -55,9 +55,14 @@ const Header = () => {
                             <li className="nav-item">
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/orders'>Orders</CustomLink>
                             </li>
-                            <li className="nav-item">
-                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/signup'>Sign Up</CustomLink>
-                            </li>
+
+                            {
+
+                                !user?.uid ? <li className="nav-item">
+                                    <CustomLink className="px-3 py-2 flex items-center uppercase" to='/signup'>Sign Up</CustomLink>
+                                </li> : ''
+                            }
+
 
                             <span>{user?.displayName && user?.displayName}</span>
 
