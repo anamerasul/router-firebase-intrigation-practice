@@ -9,7 +9,7 @@ const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
 
-    const { user } = UseFirebase()
+    const { user, handleSignOut } = UseFirebase()
 
     console.log(user)
     return (
@@ -51,13 +51,32 @@ const Header = () => {
                                 <CustomLink className="px-3 py-2 flex items-center uppercase" to='/signup'>Sign Up</CustomLink>
                             </li>
 
+                            <span>{user?.displayName && user?.displayName}</span>
+
                             {
 
+                                user?.uid ?
+
+                                    <li className="nav-item">
+                                        <button onClick={handleSignOut} className="px-3 py-2 flex items-center uppercase">Logout</button>
+                                    </li> :
+                                    <li className="nav-item">
+                                        <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
+                                    </li>
 
                             }
-                            <li className="nav-item">
-                                <CustomLink className="px-3 py-2 flex items-center uppercase" to='/login'>Login</CustomLink>
-                            </li>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         </ul>
